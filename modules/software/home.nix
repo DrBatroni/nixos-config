@@ -160,7 +160,7 @@
     # theme = "Tokyo Night";
   };
 
-  $terminal = "foot";
+  "$terminal" = "foot";
 
   # ── Git Konfiguration ─────────────────────────────────────────────────────
   programs.git = {
