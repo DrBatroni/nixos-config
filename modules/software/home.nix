@@ -89,7 +89,7 @@
         "$mod, Return, exec, kitty"
         "$mod, Q, killactive"
         "$mod, M, exit"
-        "$mod, E, exec, dolphin"
+        "$mod, E, exec, nautilus"
         "$mod, F, togglefloating"
         "$mod, Space, exec, wofi --show drun"
         "$mod, P, pseudo"   # dwindle

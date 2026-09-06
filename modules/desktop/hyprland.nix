@@ -41,6 +41,9 @@
   services.dbus.enable = true;
   security.polkit.enable = true;
 
+  # Dateisystem-Dienste für Nautilus (Papierkorb, Mounten, Netzwerkfreigaben)
+  services.gvfs.enable = true;
+
   # ── Zusätzliche Pakete für den Hyprland-Desktop ───────────────────────────
   environment.systemPackages = with pkgs; [
     # Wayland-Utilities
@@ -60,7 +63,7 @@
     slurp
 
     # Dateimanager
-    dolphin
+    nautilus
 
     # Polkit Agent
     polkit_gnome
