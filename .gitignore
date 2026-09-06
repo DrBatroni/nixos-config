@@ -1,0 +1,8 @@
+# Hardware-Konfiguration ist gerätespezifisch – NICHT einchecken!
+hosts/*/hardware-configuration.nix
+
+# Nix Build-Artefakte
+result
+result-*
+.direnv/
+

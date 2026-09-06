@@ -1,0 +1,11 @@
+# Diese Datei wird automatisch von nixos-generate-config generiert.
+# Sie wird NICHT im Git-Repository verwaltet – jeder Host generiert seine eigene.
+# 
+# Auf dem Zielsystem ausführen:
+#   nixos-generate-config --root /mnt
+# oder nach der Installation:
+#   nixos-generate-config
+#
+# Die generierte Datei dann in diesen Ordner kopieren:
+#   cp /etc/nixos/hardware-configuration.nix /path/to/nixos-config/hosts/vm/
+
