@@ -22,6 +22,7 @@
 
     # ── Terminal ──────────────────────────────────────────────────────────────
     kitty        # Hyprland-Standard-Terminal
+    foot
 
     # ── Clipboard-Tools (auch in hyprland.nix – hier für Vollständigkeit) ─────
     wl-clipboard
