@@ -12,7 +12,7 @@
 
     # ── Editoren & IDEs ───────────────────────────────────────────────────────
     vscode       # Unfree
-    notepadqq-next    # Linux-Alternative zu Notepad++
+    notepad-next    # Linux-Alternative zu Notepad++
 
     # ── Notizen ───────────────────────────────────────────────────────────────
     obsidian     # Unfree
