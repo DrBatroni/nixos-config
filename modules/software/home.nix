@@ -20,6 +20,11 @@
       ];
       #",preferred,auto,1";
 
+      # GTK4 auf den stabilen Cairo-Renderer zwingen
+      env = [
+        "GSK_RENDERER,cairo"
+      ];
+
       # ── Autostart ──────────────────────────────────────────────────────────
       exec-once = [
         # Clipboard-Dienste
