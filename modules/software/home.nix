@@ -155,14 +155,16 @@
       background_opacity = "0.95";
       confirm_os_window_close = 0;
     };
-    theme = "Tokyo Night";
+    # theme = "Tokyo Night";
   };
 
   # ── Git Konfiguration ─────────────────────────────────────────────────────
   programs.git = {
     enable    = true;
-    userName  = "batroni";
-    userEmail = "dein@email.com";  # Hier deine E-Mail eintragen
+    settings = {
+      userName  = "batroni";
+      userEmail = "dein@email.com";  # Hier deine E-Mail eintragen
+    };
     extraConfig = {
       init.defaultBranch = "main";
       pull.rebase = false;
