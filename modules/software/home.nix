@@ -88,7 +88,7 @@
 
       bind = [
         # Basics
-        "$mod, Return, exec, kitty"
+        "$mod, Return, exec, foot"
         "$mod, Q, killactive"
         "$mod, M, exit"
         "$mod, E, exec, nautilus"
@@ -159,8 +159,6 @@
     };
     # theme = "Tokyo Night";
   };
-
-  "$terminal" = "foot";
 
   # ── Git Konfiguration ─────────────────────────────────────────────────────
   programs.git = {
