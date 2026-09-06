@@ -165,11 +165,7 @@
       user = {
         name  = "batroni";
         email = "dein@email.com";  # Hier deine E-Mail eintragen
-      }
-    };
-    extraConfig = {
-      init.defaultBranch = "main";
-      pull.rebase = false;
+      };
     };
   };
 
