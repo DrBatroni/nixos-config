@@ -162,8 +162,10 @@
   programs.git = {
     enable    = true;
     settings = {
-      userName  = "batroni";
-      userEmail = "dein@email.com";  # Hier deine E-Mail eintragen
+      user = {
+        name  = "batroni";
+        email = "dein@email.com";  # Hier deine E-Mail eintragen
+      }
     };
     extraConfig = {
       init.defaultBranch = "main";
