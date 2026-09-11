@@ -155,7 +155,7 @@
         "$mod, mouse:273, resizewindow"
       ];
 
-      windowrulev2 = [
+      windowrule = [
         "float, class:^(.*quickshell.*)$"
         "center, class:^(.*quickshell.*)$"
         "size 900 600, class:^(.*quickshell.*)$"
