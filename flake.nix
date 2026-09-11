@@ -51,7 +51,8 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.batroni = import ./modules/software/home.nix;
-            home-manager.extraSpecialArgs = { inherit serpantinum; };
+            # home-manager.extraSpecialArgs = { inherit serpantinum; };
+            home-manager.extraSpecialArgs = { inherit inputs; };
           }
         ];
       };

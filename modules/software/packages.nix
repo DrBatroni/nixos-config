@@ -34,13 +34,25 @@
     unzip
     wget
     curl
-
-    # ── Fonts ─────────────────────────────────────────────────────────────────
-    nerd-fonts.jetbrains-mono
-    nerd-fonts.fira-code
   ];
 
   # ── Fonts systemweit aktivieren ───────────────────────────────────────────
-  fonts.fontconfig.enable = true;
+  fonts = {
+    enableDefaultPackages = true;
+    packages = with pkgs; [
+      nerd-fonts.jetbrains-mono
+      nerd-fonts.symbols-only      # Enthält alle App- & System-Icons
+      material-symbols             # Google Material Icons für die Navigation
+      noto-fonts
+      noto-fonts-emoji
+    ];
+    fontconfig = {
+      enable = true;
+      defaultFonts = {
+        monospace = [ "JetBrainsMono Nerd Font" ];
+        sansSerif = [ "Noto Sans" ];
+      };
+    };
+  };
 }
 

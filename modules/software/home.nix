@@ -20,6 +20,10 @@
       ];
       #",preferred,auto,1";
 
+      cursor = {
+        no_hardware_cursors = true;
+      };
+
       # GTK4 auf den stabilen Cairo-Renderer zwingen
       env = [
         "GSK_RENDERER,cairo"
