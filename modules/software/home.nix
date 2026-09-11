@@ -27,6 +27,8 @@
       # GTK4 auf den stabilen Cairo-Renderer zwingen
       env = [
         "GSK_RENDERER,cairo"
+        "LIBGL_ALWAYS_SOFTWARE,1"
+        "QT_QPA_PLATFORM,wayland"
       ];
 
       # ── Autostart ──────────────────────────────────────────────────────────
@@ -35,7 +37,7 @@
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
         # Serpantinum Shell starten
-        "serpantinumd start"
+        "serpantinum start"
         # Polkit-Agent
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         # Wallpaper-Daemon
@@ -56,13 +58,13 @@
       decoration = {
         rounding = 10;
         shadow = {
-          enabled = true; # Tipp: In einer VM kannst du hier 'false' setzen, um Grafik-Lags zu vermeiden
+          enabled = false; # Tipp: In einer VM kannst du hier 'false' setzen, um Grafik-Lags zu vermeiden
           range = 4;
           render_power = 3;
           color = "rgba(1a1a1aee)";
         };
         blur = {
-          enabled = true;
+          enabled = false;
           size    = 3;
           passes  = 1;
         };
@@ -104,7 +106,8 @@
         "$mod, M, exit"
         "$mod, E, exec, nautilus"
         "$mod, F, togglefloating"
-        "$mod, Space, exec, wofi --show drun"
+        "$mod, Space, exec, serpantinum msg toggle launcher"
+        # "$mod, Space, exec, wofi --show drun"
         "$mod, P, pseudo"   # dwindle
         # "$mod, J, togglesplit" # dwindle
 
@@ -112,7 +115,8 @@
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
 
         # Clipboard-Verlauf
-        "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
+        "$mod, V, exec, serpantinum msg toggle clipboard"
+        # "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
         # Fokus bewegen
         "$mod, left,  movefocus, l"
@@ -155,11 +159,7 @@
         "$mod, mouse:273, resizewindow"
       ];
 
-      windowrule = [
-        "float, class:^(.*quickshell.*)$"
-        "center, class:^(.*quickshell.*)$"
-        "size 900 600, class:^(.*quickshell.*)$"
-      ];
+      
     };
   };
 
