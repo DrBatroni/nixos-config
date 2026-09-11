@@ -44,7 +44,7 @@
       nerd-fonts.symbols-only      # Enthält alle App- & System-Icons
       material-symbols             # Google Material Icons für die Navigation
       noto-fonts
-      noto-fonts-emoji
+      noto-fonts-color-emoji
     ];
     fontconfig = {
       enable = true;
