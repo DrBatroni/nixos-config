@@ -21,12 +21,13 @@
     git
 
     # ── Terminal ──────────────────────────────────────────────────────────────
-    kitty        # Hyprland-Standard-Terminal
+    kitty
     foot
 
-    # ── Clipboard-Tools (auch in hyprland.nix – hier für Vollständigkeit) ─────
+    # ── Clipboard- & Wallpaper-Tools ──────────────────────────────────────────
     wl-clipboard
     cliphist
+    swww
 
     # ── System-Tools ──────────────────────────────────────────────────────────
     btop         # Ressourcen-Monitor
