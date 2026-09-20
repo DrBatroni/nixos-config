@@ -28,7 +28,7 @@
   ];
 
   environment.systemPackages = [
-    pkgs.serpantinum
+    serpantinum.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 }
 

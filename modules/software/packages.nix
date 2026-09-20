@@ -27,7 +27,7 @@
     # ── Clipboard- & Wallpaper-Tools ──────────────────────────────────────────
     wl-clipboard
     cliphist
-    swww
+    awww
 
     # ── System-Tools ──────────────────────────────────────────────────────────
     btop         # Ressourcen-Monitor
