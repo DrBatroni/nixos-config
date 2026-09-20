@@ -15,7 +15,7 @@
     };
 
     
-    nuctulia = {
+    noctalia = {
       url = "github:noctalia-dev/noctalia";
       inputs.nixpkgs.follows = "nixpkgs"; # this line is optional, prevents downloading two versions of nixpkgs but disables cache
     };
@@ -65,6 +65,8 @@
           };
 
           modules = [
+            noctalia.nixosModules.default
+
             ./hosts/laptop/configuration.nix
             ./modules/core/nix.nix
             ./modules/core/users.nix
