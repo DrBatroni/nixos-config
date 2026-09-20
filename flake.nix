@@ -20,42 +20,59 @@
       system = "x86_64-linux";
     in
     {
-      nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
-        inherit system;
+      nixosConfigurations = {
+        # ── 1. Deine bestehende VM ──────────────────────────────────────────
+        vm = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-        specialArgs = {
-          inherit serpantinum;
+          specialArgs = {
+            inherit serpantinum;
+          };
+
+          modules = [
+            ./hosts/vm/configuration.nix
+            ./modules/core/nix.nix
+            ./modules/core/users.nix
+            ./modules/hardware/virtualbox.nix
+            ./modules/desktop/hyprland.nix
+            ./modules/desktop/serpantinum.nix
+            ./modules/software/packages.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.batroni = import ./modules/software/home.nix;
+              home-manager.extraSpecialArgs = { inherit serpantinum; };
+            }
+          ];
         };
 
-        modules = [
-          # Host-spezifische Konfiguration
-          ./hosts/vm/configuration.nix
+        # ── 2. Dein physischer Laptop (ohne VirtualBox-Treiber) ─────────────
+        laptop = nixpkgs.lib.nixosSystem {
+          inherit system;
 
-          # Core-Module
-          ./modules/core/nix.nix
-          ./modules/core/users.nix
+          specialArgs = {
+            inherit serpantinum;
+          };
 
-          # Hardware
-          ./modules/hardware/virtualbox.nix
+          modules = [
+            ./hosts/laptop/configuration.nix
+            ./modules/core/nix.nix
+            ./modules/core/users.nix
+            ./modules/desktop/hyprland.nix
+            ./modules/desktop/serpantinum.nix
+            ./modules/software/packages.nix
 
-          # Desktop
-          ./modules/desktop/hyprland.nix
-          ./modules/desktop/serpantinum.nix
-
-          # Software
-          ./modules/software/packages.nix
-
-          # Home-Manager als NixOS-Modul
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.batroni = import ./modules/software/home.nix;
-            home-manager.extraSpecialArgs = { inherit serpantinum; };
-            # home-manager.extraSpecialArgs = { inherit inputs; };
-          }
-        ];
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.batroni = import ./modules/software/home.nix;
+              home-manager.extraSpecialArgs = { inherit serpantinum; };
+            }
+          ];
+        };
       };
     };
 }
-

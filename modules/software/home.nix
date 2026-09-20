@@ -5,7 +5,6 @@
   home.homeDirectory = "/home/batroni";
 
   # ── Home-Manager State Version ────────────────────────────────────────────
-  # Nicht ändern nach erstmaliger Aktivierung!
   home.stateVersion = "25.05";
 
   # ── Hyprland Konfiguration ────────────────────────────────────────────────
@@ -14,20 +13,14 @@
     configType = "hyprlang";
 
     settings = {
-      # ── Monitor ────────────────────────────────────────────────────────────
+      # ── Monitor (Automatische Erkennung für Laptop & externe Displays) ───────
       monitor = [
-        "Virtual-1, 1920x1080@60, 0x0, 1"
+        ",preferred,auto,1"
       ];
-      #",preferred,auto,1";
 
-      cursor = {
-        no_hardware_cursors = true;
-      };
-
-      # GTK4 auf den stabilen Cairo-Renderer zwingen
+      # ── Umgebungsvariablen (Volle GPU-Beschleunigung am Laptop) ─────────────
       env = [
         "GSK_RENDERER,cairo"
-        "LIBGL_ALWAYS_SOFTWARE,1"
         "QT_QPA_PLATFORM,wayland"
       ];
 
@@ -36,8 +29,8 @@
         # Clipboard-Dienste
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        # Serpantinum Shell starten
-        "serpantinum start"
+        # Serpantinum Shell starten (korrekter Aufruf: launch start)
+        "serpantinum launch start"
         # Polkit-Agent
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         # Wallpaper-Daemon
@@ -46,25 +39,25 @@
 
       # ── Allgemeine Einstellungen ────────────────────────────────────────────
       general = {
-        gaps_in   = 5;
-        gaps_out  = 10;
+        gaps_in     = 5;
+        gaps_out    = 10;
         border_size = 2;
         "col.active_border"   = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
         layout = "dwindle";
       };
 
-      # ── Dekorationen ───────────────────────────────────────────────────────
+      # ── Dekorationen (Auf echter Hardware flüssig mit Schatten & Blur) ───────
       decoration = {
         rounding = 10;
         shadow = {
-          enabled = false; # Tipp: In einer VM kannst du hier 'false' setzen, um Grafik-Lags zu vermeiden
+          enabled = true;
           range = 4;
           render_power = 3;
           color = "rgba(1a1a1aee)";
         };
         blur = {
-          enabled = false;
+          enabled = true;
           size    = 3;
           passes  = 1;
         };
@@ -88,12 +81,12 @@
       input = {
         kb_layout  = "de";
         follow_mouse = 1;
-        touchpad.natural_scroll = false;
+        touchpad.natural_scroll = true; # Natürliches Touchpad-Scrollen für Laptops
       };
 
       # ── Dwindle Layout ─────────────────────────────────────────────────────
       dwindle = {
-        preserve_split  = true;
+        preserve_split = true;
       };
 
       # ── Keybindings ────────────────────────────────────────────────────────
@@ -107,16 +100,13 @@
         "$mod, E, exec, nautilus"
         "$mod, F, togglefloating"
         "$mod, Space, exec, serpantinum msg toggle launcher"
-        # "$mod, Space, exec, wofi --show drun"
-        "$mod, P, pseudo"   # dwindle
-        # "$mod, J, togglesplit" # dwindle
+        "$mod, P, pseudo"
 
         # Screenshot
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
 
         # Clipboard-Verlauf
         "$mod, V, exec, serpantinum msg toggle clipboard"
-        # "$mod, V, exec, cliphist list | wofi --dmenu | cliphist decode | wl-copy"
 
         # Fokus bewegen
         "$mod, left,  movefocus, l"
@@ -158,8 +148,6 @@
         "$mod, mouse:272, movewindow"
         "$mod, mouse:273, resizewindow"
       ];
-
-      
     };
   };
 
@@ -174,16 +162,15 @@
       background_opacity = "0.95";
       confirm_os_window_close = 0;
     };
-    # theme = "Tokyo Night";
   };
 
   # ── Git Konfiguration ─────────────────────────────────────────────────────
   programs.git = {
-    enable    = true;
+    enable = true;
     settings = {
       user = {
         name  = "batroni";
-        email = "dein@email.com";  # Hier deine E-Mail eintragen
+        email = "dein@email.com";
       };
     };
   };
@@ -192,14 +179,13 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      ll       = "ls -la";
-      nrs      = "sudo nixos-rebuild switch --flake ~/.config/nixos-config#vm";
-      nrb      = "sudo nixos-rebuild boot --flake ~/.config/nixos-config#vm";
-      update   = "nix flake update ~/.config/nixos-config";
-      gc       = "sudo nix-collect-garbage -d";
+      ll     = "ls -la";
+      nrs    = "sudo nixos-rebuild switch --flake ~/nixos-config#laptop";
+      nrb    = "sudo nixos-rebuild boot --flake ~/nixos-config#laptop";
+      update = "nix flake update ~/nixos-config";
+      gc     = "sudo nix-collect-garbage -d";
     };
     initExtra = ''
-      # Fastfetch beim Terminal-Start
       fastfetch
     '';
   };
@@ -207,4 +193,3 @@
   # ── Home-Manager aktivieren ────────────────────────────────────────────────
   programs.home-manager.enable = true;
 }
-
