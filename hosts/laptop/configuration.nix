@@ -51,6 +51,15 @@
   # ── OpenGL / GPU ──────────────────────────────────────────────────────────
   hardware.graphics.enable = true;
 
+  # ── Bluetooth Hardware & Daemon ───────────────────────────────────────────
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true; # Schaltet Bluetooth beim Systemstart direkt ein
+  };
+
+  # ── Blueman (GUI & Tray-Dienst zum Koppeln von Geräten) ───────────────────
+  services.blueman.enable = true;
+
   # ── NixOS State Version ───────────────────────────────────────────────────
   # Nicht ändern! Dieser Wert bestimmt die initiale Systemkonfiguration.
   system.stateVersion = "25.05";

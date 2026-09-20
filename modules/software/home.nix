@@ -126,6 +126,12 @@
         "$mod, 9, workspace, 9"
         "$mod, 0, workspace, 10"
 
+        # Fensterposition im Layout tauschen
+        "bind = $mainMod SHIFT, left, swapwindow, l"
+        "bind = $mainMod SHIFT, right, swapwindow, r"
+        "bind = $mainMod SHIFT, up, swapwindow, u"
+        "bind = $mainMod SHIFT, down, swapwindow, d"
+  
         # Fenster zu Workspace verschieben
         "$mod SHIFT, 1, movetoworkspace, 1"
         "$mod SHIFT, 2, movetoworkspace, 2"
@@ -137,6 +143,23 @@
         "$mod SHIFT, 8, movetoworkspace, 8"
         "$mod SHIFT, 9, movetoworkspace, 9"
         "$mod SHIFT, 0, movetoworkspace, 10"
+
+        # Fenster auf nächsten / vorherigen Monitor schieben
+        "bind = $mainMod ALT, right, movewindow, mon:+1"
+        "bind = $mainMod ALT, left, movewindow, mon:-1"
+
+        # Monitor-Fokus ohne Fensterwechsel wechseln
+        "bind = $mainMod, comma, focusmonitor, -1"
+        "bind = $mainMod, period, focusmonitor, +1"
+
+        # Pixelweise Vergrößern/Verkleinern (X Y)
+        "binde = $mainMod CTRL, right, resizeactive, 30 0"
+        "binde = $mainMod CTRL, left, resizeactive, -30 0"
+        "binde = $mainMod CTRL, up, resizeactive, 0 -30"
+        "binde = $mainMod CTRL, down, resizeactive, 0 30"
+
+        # Per Maus: Super + Rechtsklick halten und ziehen
+        "bindm = $mainMod, mouse:273, resizewindow"
 
         # Scratchpad
         "$mod, S, togglespecialworkspace, magic"
