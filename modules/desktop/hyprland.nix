@@ -52,7 +52,7 @@
     cliphist       # Clipboard-Manager
     waybar         # Status-Bar (Fallback, falls Serpantinum nicht lädt)
     dunst          # Benachrichtigungen
-    swww           # Animated Wallpaper Daemon
+    awww           # Animated Wallpaper Daemon
 
     # Screen-Lock & Idle
     swaylock
