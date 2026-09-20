@@ -13,9 +13,16 @@
       url = "github:ilyamiro/serpantinum";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    
+    nuctulia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs"; # this line is optional, prevents downloading two versions of nixpkgs but disables cache
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, serpantinum, ... }:
+  
+  outputs = { self, nixpkgs, home-manager, serpantinum, nuctulia, ... }:
     let
       system = "x86_64-linux";
     in
@@ -35,6 +42,7 @@
             ./modules/core/users.nix
             ./modules/hardware/virtualbox.nix
             ./modules/desktop/hyprland.nix
+            ./modules/desktop/noctalia.nix
             ./modules/desktop/serpantinum.nix
             ./modules/software/packages.nix
 
@@ -61,6 +69,7 @@
             ./modules/core/nix.nix
             ./modules/core/users.nix
             ./modules/desktop/hyprland.nix
+            ./modules/desktop/noctalia.nix
             ./modules/desktop/serpantinum.nix
             ./modules/software/packages.nix
 

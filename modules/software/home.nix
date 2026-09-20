@@ -26,16 +26,25 @@
 
       # ── Autostart ──────────────────────────────────────────────────────────
       exec-once = [
-        # Clipboard-Dienste
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        # Serpantinum Shell starten (korrekter Aufruf: launch start)
-        "serpantinum launch start"
-        # Polkit-Agent
+        # Noctalia starten
+        "noctalia"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
-        # Wallpaper-Daemon
         "awww-daemon"
       ];
+
+      # exec-once = [
+      #   # Clipboard-Dienste
+      #   "wl-paste --type text --watch cliphist store"
+      #   "wl-paste --type image --watch cliphist store"
+      #   # Serpantinum Shell starten (korrekter Aufruf: launch start)
+      #   "serpantinum launch start"
+      #   # Polkit-Agent
+      #   "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+      #   # Wallpaper-Daemon
+      #   "awww-daemon"
+      # ];
 
       # ── Allgemeine Einstellungen ────────────────────────────────────────────
       general = {
@@ -99,8 +108,11 @@
         "$mod, M, exit"
         "$mod, E, exec, nautilus"
         "$mod, F, togglefloating"
-        "$mod, Space, exec, serpantinum msg toggle launcher"
+        # "$mod, Space, exec, serpantinum msg toggle launcher"
         "$mod, P, pseudo"
+
+        "$mod, Space, exec, noctalia toggle launcher"
+        "$mod, C, exec, noctalia toggle control-center"
 
         # Screenshot
         ", Print, exec, grim -g \"$(slurp)\" - | wl-copy"
