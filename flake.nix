@@ -22,7 +22,7 @@
   };
 
   
-  outputs = { self, nixpkgs, home-manager, serpantinum, nuctulia, ... }:
+  outputs = { self, nixpkgs, home-manager, serpantinum, noctalia, ... }:
     let
       system = "x86_64-linux";
     in
