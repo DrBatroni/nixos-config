@@ -34,7 +34,7 @@
         # Polkit-Agent
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
         # Wallpaper-Daemon
-        "swww-daemon"
+        "awww-daemon"
       ];
 
       # ── Allgemeine Einstellungen ────────────────────────────────────────────
@@ -157,9 +157,6 @@
         "$mod = $mainMod CTRL, left, resizeactive, -30 0"
         "$mod = $mainMod CTRL, up, resizeactive, 0 -30"
         "$mod = $mainMod CTRL, down, resizeactive, 0 30"
-
-        # Per Maus: Super + Rechtsklick halten und ziehen
-        "$mod = $mainMod, mouse:273, resizewindow"
 
         # Scratchpad
         "$mod, S, togglespecialworkspace, magic"
